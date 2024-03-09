@@ -1,6 +1,7 @@
 FROM ghcr.io/homebrew/brew:latest
 RUN brew install fish starship fzf ripgrep \
   git \
+  just \
   helix \
   gh \
   lazygit \
