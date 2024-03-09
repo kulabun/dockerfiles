@@ -22,3 +22,6 @@ RUN brew install fish starship fzf ripgrep \
   taplo \
   yaml-language-server
 
+RUN command -v fish | sudo tee -a /etc/shells \
+    && sudo chsh -s "$(command -v zsh)" "${USER}" \
+    && starship init fish >> $XDG_CONFIG_HOME/fish/config.fish
