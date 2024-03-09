@@ -3,6 +3,9 @@ name: Build and Push Docker Image - brew-toolbox
 on:
   schedule:
     - cron: '0 5 * * 1'
+  push:
+    paths:
+      - .github/workflows/brew-toolbox.yml
   workflow_dispatch:
 
 jobs:

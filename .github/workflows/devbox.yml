@@ -3,6 +3,10 @@ name: Build and Push Docker Image - devbox
 on:
   schedule:
     - cron: '0 6 * * 1'
+  push:
+    paths:
+      - .github/workflows/devbox.yml
+      - devbox/Dockerfile
   workflow_dispatch:
 
 jobs:
