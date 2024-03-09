@@ -22,15 +22,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build the Docker image
+      - name: Build And Push the Docker image - devbox
+        env:
+          IMAGE: devbox
         run: |
-          cd ./devbox
-          docker build . --file Dockerfile --tag devbox
-    
-      - name: Push the Docker image
-        run: |
-          docker tag devbox "ghcr.io/kulabun/devbox:latest"
-          docker push "ghcr.io/kulabun/devbox:latest"
+          cd ./${IMAGE}
+          docker build . --file Dockerfile --tag ${IMAGE}
+
+          docker tag ${IMAGE} "ghcr.io/kulabun/${IMAGE}:latest"
+          docker push "ghcr.io/kulabun/${IMAGE}:latest"
           
-          docker tag devbox "ghcr.io/kulabun/devbox:$(date +%s)"
-          docker push "ghcr.io/kulabun/devbox:$(date +%s)"
+          docker tag ${IMAGE} "ghcr.io/kulabun/${IMAGE}:$(date +%s)"
+          docker push "ghcr.io/kulabun/${IMAGE}:$(date +%s)"
