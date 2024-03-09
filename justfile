@@ -1,4 +1,4 @@
 
 devbox:
-	gh workflow run "Build And Push the Docker image - devbox"
+	gh workflow run "Build and Push Docker Image - devbox"
 

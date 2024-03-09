@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Image - devbox
 
 on:
   schedule:
@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build And Push the Docker image - devbox
+      - name: Build And Push the Docker image
         env:
           IMAGE: devbox
         run: |
