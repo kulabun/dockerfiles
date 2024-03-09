@@ -1,4 +1,5 @@
-FROM ghcr.io/homebrew/brew:latest
+FROM ghcr.io/kulabun/brew-toolbox:latest
+
 RUN brew install fish starship fzf ripgrep \
   git \
   just \
