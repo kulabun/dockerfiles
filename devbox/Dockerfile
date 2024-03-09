@@ -11,4 +11,6 @@ RUN brew install fish starship fzf ripgrep \
   bash-language-server \
   vscode-langservers-extracted \
   typescript-language-server \
-  dockerfile-language-server
+  dockerfile-language-server \
+  taplo \
+  yaml-language-server
