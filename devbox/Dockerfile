@@ -6,11 +6,13 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="konstantin.labun@gmail.com"
       
 RUN brew install fish starship fzf ripgrep \
+  broot \
+  trash-cli \
   git \
   just \
   helix \
   gh \
-  lazygit \
+  gitui \
   pyright ruff black \
   rust-analyzer \
   ansible-language-server \
