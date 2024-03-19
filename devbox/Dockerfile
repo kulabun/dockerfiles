@@ -22,7 +22,8 @@ RUN brew install fish starship fzf ripgrep \
   typescript-language-server \
   dockerfile-language-server \
   taplo \
-  yaml-language-server
+  yaml-language-server \
+  "sourcegraph/src-cli/src-cli"
 
 RUN brew install speedtest-cli zellij xdg-ninja awscli bat jq chezmoi
 RUN sudo apt-get update \
