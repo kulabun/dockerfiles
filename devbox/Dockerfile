@@ -2,9 +2,9 @@ FROM quay.io/toolbx-images/debian-toolbox:latest
 # Switched to Debian from Ubuntu because of the cursor size issue in GUI apps running in container.
 
 LABEL com.github.containers.toolbox="true" \
-      usage="This image is meant to be used with the toolbox or distrobox command" \
-      summary="Personal development environment" \
-      maintainer="konstantin.labun@gmail.com"
+  usage="This image is meant to be used with the toolbox or distrobox command" \
+  summary="Personal development environment" \
+  maintainer="konstantin.labun@gmail.com"
 
 RUN sudo apt-get update \
   && sudo apt-get -y upgrade \
@@ -12,14 +12,13 @@ RUN sudo apt-get update \
   && sudo apt-get autoremove --purge -y \
   && sudo rm -rf /var/lib/apt/lists/*
 
-
 # LinuxBrew
 RUN useradd -u 1000 -m -d /home/linuxbrew linuxbrew
 USER linuxbrew
 RUN mkdir ~/.linuxbrew ~/.linuxbrew/Homebrew && \
-    git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && \
-    mkdir ~/.linuxbrew/bin && \
-    ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+  git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && \
+  mkdir ~/.linuxbrew/bin && \
+  ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
 
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   fish \
@@ -48,7 +47,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   dockerfile-language-server \
   taplo \
   yaml-language-server 
-  
+
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   broot \
   gitui \
@@ -90,6 +89,15 @@ StartupWMClass=jetbrains-idea-ce
 StartupNotify=true
 END
 
+# Google Cloud SDK
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o cloud.google.gpg \
+  && sudo install -D -o root -g root -m 644 cloud.google.gpg /usr/share/keyrings/cloud.google.gpg \
+  && rm -f cloud.google.gpg \
+  && sudo apt-get update \
+  && sudo apt-get install -y google-cloud-cli \
+  && sudo apt-get autoremove --purge -y \
+  && sudo rm -rf /var/lib/apt/lists/*
 
 # Setup Fish
 RUN command -v fish | sudo tee -a /etc/shells
