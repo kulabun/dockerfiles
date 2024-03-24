@@ -14,7 +14,7 @@ RUN sudo apt-get update \
 
 
 # LinuxBrew
-RUN useradd -u 9876 -m -d /home/linuxbrew linuxbrew
+RUN useradd -u 1000 -m -d /home/linuxbrew linuxbrew
 USER linuxbrew
 RUN mkdir ~/.linuxbrew ~/.linuxbrew/Homebrew && \
     git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && \
@@ -30,6 +30,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   git \
   git-delta \
   gh \
+  glab \
   zellij \
   bat \
   awscli \
