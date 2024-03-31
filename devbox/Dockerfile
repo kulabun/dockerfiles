@@ -99,6 +99,9 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
   && sudo apt-get autoremove --purge -y \
   && sudo rm -rf /var/lib/apt/lists/*
 
+# Devpod
+RUN curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
+
 # Setup Fish
 RUN command -v fish | sudo tee -a /etc/shells
 CMD ["fish"]
