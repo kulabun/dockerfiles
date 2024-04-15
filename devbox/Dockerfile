@@ -15,6 +15,8 @@ RUN echo "LC_ALL=en_US.UTF-8" | sudo tee -a /etc/environment \
 RUN sudo apt-get update \
   && sudo apt-get -y upgrade \
   && sudo apt-get -y install wl-clipboard libsecret-1-0 curl wget gpg git build-essential \
+  && sudo apt-get -y install ykcs11 yubikey-manager \
+  && sudo apt-get -y install gnupg2 gnupg-agent dirmngr cryptsetup scdaemon pcscd \
   && sudo apt-get autoremove --purge -y \
   && sudo rm -rf /var/lib/apt/lists/*
 
@@ -46,7 +48,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   pyright ruff black \
   rust-analyzer \
-  ansible ansible-language-server \
+  ansible ansible-lint ansible-language-server \
   terraform terraform-ls \
   bash-language-server \
   vscode-langservers-extracted \
@@ -61,6 +63,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   just \
   "sourcegraph/src-cli/src-cli" \
   speedtest-cli \
+  bitwarden-cli \
   xdg-ninja \
   chezmoi
 

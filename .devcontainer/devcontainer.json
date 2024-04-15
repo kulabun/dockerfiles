@@ -1,0 +1,22 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/usr/bin/fish"
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"GitHub.copilot",
+				"sourcegraph.sourcegraph"
+			]
+		}
+	},
+	"postCreateCommand": "pip install --user -r requirements.txt",
+	"containerUser": "vscode",
+	"containerEnv": {
+		"HOME": "/home/vscode"
+	}
+}
