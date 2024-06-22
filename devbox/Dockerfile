@@ -44,6 +44,8 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   awscli \
   trash-cli \
   gopass \
+  age \
+  sops \
   jq 
 
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
