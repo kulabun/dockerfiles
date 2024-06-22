@@ -43,6 +43,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
   bat \
   awscli \
   trash-cli \
+  gopass \
   jq 
 
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install \
@@ -111,7 +112,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
   && sudo rm -rf /var/lib/apt/lists/*
 
 # Devpod
-RUN curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
+# RUN curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
 # Setup Fish
 RUN command -v fish | sudo tee -a /etc/shells
