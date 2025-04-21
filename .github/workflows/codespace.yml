@@ -28,7 +28,7 @@ jobs:
 
       - name: Build And Push the Docker image
         env:
-          IMAGE: devbox
+          IMAGE: codespace
         run: |
           cd ./${IMAGE}
           docker build . --file Dockerfile --tag ${IMAGE}
