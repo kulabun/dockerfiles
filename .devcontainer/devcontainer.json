@@ -1,20 +1,10 @@
 {
-	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/universal:2-focal",
+	"image": "mcr.microsoft.com/devcontainers/universal:linux",
 	"customizations": {
 		"vscode": {
-			"settings": {
-				"terminal.integrated.shell.linux": "/usr/bin/fish"
-			},
 			"extensions": [
-				"ms-python.python",
-				"ms-python.black-formatter",
-				"GitHub.copilot"
+
 			]
 		}
-	},
-	"containerUser": "vscode",
-	"containerEnv": {
-		"HOME": "/home/vscode"
 	}
 }
