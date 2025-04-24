@@ -1,6 +1,6 @@
 {
 	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/universal:2-focal",
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -9,8 +9,7 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.black-formatter",
-				"GitHub.copilot",
-				"sourcegraph.sourcegraph"
+				"GitHub.copilot"
 			]
 		}
 	},
