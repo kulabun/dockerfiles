@@ -1,0 +1,40 @@
+name: Build and Push Docker Image - ollama
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  push:
+    paths:
+      - .github/workflows/ollama.yml
+      - ollama/Dockerfile
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Login to Github Packages
+        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin ghcr.io
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build And Push the Docker image
+        env:
+          IMAGE: ollama
+        run: |
+          cd ./${IMAGE}
+          docker build . --file Dockerfile --tag ${IMAGE}
+
+          docker tag ${IMAGE} "ghcr.io/kulabun/${IMAGE}:latest"
+          docker push "ghcr.io/kulabun/${IMAGE}:latest"
+          
+          docker tag ${IMAGE} "ghcr.io/kulabun/${IMAGE}:$(date +%s)"
+          docker push "ghcr.io/kulabun/${IMAGE}:$(date +%s)"
