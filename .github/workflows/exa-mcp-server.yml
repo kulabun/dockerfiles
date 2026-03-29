@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout exa-mcp-server code
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
         with:
           repository: exa-labs/exa-mcp-server
           path: exa-mcp-server
