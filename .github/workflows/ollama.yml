@@ -8,7 +8,8 @@ on:
       - main
     paths:
       - .github/workflows/ollama.yml
-      - ollama/Dockerfile
+      - ollama/**
+      - '!ollama/**/*.md'
   workflow_dispatch:
 
 jobs:

@@ -8,7 +8,8 @@ on:
       - main
     paths:
       - .github/workflows/open-webui.yml
-      - open-webui/Dockerfile
+      - open-webui/**
+      - '!open-webui/**/*.md'
   workflow_dispatch:
 
 jobs:
