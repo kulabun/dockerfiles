@@ -9,3 +9,6 @@ github-rebuild-brew:
 	gh workflow run "Build and Push Docker Image - brew-toolbox"
 
 
+
+github-rebuild-github-runner:
+	gh workflow run "Build and Push Docker Image - github-runner"
