@@ -25,4 +25,6 @@ RUN curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L https://github.
 
 RUN sudo ./bin/installdependencies.sh
 
-CMD ["./run.sh"]
+COPY entrypoint.sh ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]

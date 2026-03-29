@@ -8,13 +8,13 @@ This runner is meant to be used for the `homelab` repository. You will need a ru
 
 ### Configuration
 
-Before running, you must configure the runner. Start the container interactively or via an entrypoint script and run the configuration script provided by GitHub:
+The runner requires configuration variables passed as environment variables when you start the container:
 
 ```bash
-./config.sh --url https://github.com/kulabun/homelab --token <TOKEN_HERE>
+docker run -e REPO_URL="https://github.com/kulabun/homelab" -e RUNNER_TOKEN="<TOKEN_HERE>" ghcr.io/kulabun/github-runner:latest
 ```
 
-*Note:* The token is set up on GitHub in the repository or organization settings under Actions -> Runners.
+*Note:* The token is set up on GitHub in the repository or organization settings under Actions -> Runners. The container entrypoint handles registering the runner and automatically cleans it up on shutdown. It uses the `--ephemeral` flag to ensure a clean environment per job.
 
 ### Workflow Configuration
 
