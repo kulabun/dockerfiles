@@ -15,7 +15,7 @@ fi
 RUNNER_NAME=${RUNNER_NAME:-$(hostname)}
 
 echo "Configuring the runner..."
-./config.sh --unattended --url "$REPO_URL" --token "$RUNNER_TOKEN" --name "$RUNNER_NAME" --replace --ephemeral
+./config.sh --unattended --url "$REPO_URL" --token "$RUNNER_TOKEN" --name "$RUNNER_NAME" --labels "$RUNNER_LABELS" --replace --ephemeral
 
 # Trap SIGINT and SIGTERM to clean up the runner on container exit
 cleanup() {
