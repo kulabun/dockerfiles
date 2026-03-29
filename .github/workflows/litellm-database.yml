@@ -8,7 +8,8 @@ on:
       - main
     paths:
       - .github/workflows/litellm-database.yml
-      - litellm-database/Dockerfile
+      - litellm-database/**
+      - '!litellm-database/**/*.md'
   workflow_dispatch:
 
 jobs:

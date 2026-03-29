@@ -8,7 +8,8 @@ on:
       - main
     paths:
       - .github/workflows/devbox.yml
-      - devbox/Dockerfile
+      - devbox/**
+      - '!devbox/**/*.md'
   workflow_dispatch:
 
 jobs:

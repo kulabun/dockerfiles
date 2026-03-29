@@ -8,7 +8,8 @@ on:
       - main
     paths:
       - .github/workflows/codespace.yml
-      - codespace/Dockerfile
+      - codespace/**
+      - '!codespace/**/*.md'
   workflow_dispatch:
 
 jobs:
