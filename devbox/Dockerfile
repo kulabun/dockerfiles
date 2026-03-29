@@ -7,7 +7,9 @@ LABEL com.github.containers.toolbox="true" \
   maintainer="konstantin.labun@gmail.com"
 
 # Fix for locale error I got after updating debian image once..
-RUN echo "LC_ALL=en_US.UTF-8" | sudo tee -a /etc/environment \
+RUN sudo apt-get update \
+  && sudo apt-get install -y locales \
+  && echo "LC_ALL=en_US.UTF-8" | sudo tee -a /etc/environment \
   && echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen \
   && echo "LANG=en_US.UTF-8" | sudo tee -a /etc/locale.conf \
   && sudo locale-gen en_US.UTF-8
