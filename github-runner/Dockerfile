@@ -9,6 +9,8 @@ RUN apt-get update -y && \
     sudo \
     jq \
     git \
+    docker.io \
+    docker-compose \
   && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m actions && \
