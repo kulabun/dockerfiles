@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - codespace
+          - devbox
+          - litellm
+          - litellm-database
+          - ollama
+          - open-webui
+          - open-webui-ollama
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          cd ./${{ matrix.image }}
+          docker build . --file Dockerfile --tag ${{ matrix.image }}:test
