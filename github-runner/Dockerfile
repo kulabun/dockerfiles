@@ -10,8 +10,12 @@ RUN apt-get update -y && \
     jq \
     git \
     docker.io \
-    docker-compose \
   && rm -rf /var/lib/apt/lists/*
+
+ENV DOCKER_COMPOSE_VERSION=v2.26.1
+RUN mkdir -p /usr/libexec/docker/cli-plugins && \
+  curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-$(uname -m)" -o /usr/libexec/docker/cli-plugins/docker-compose && \
+  chmod +x /usr/libexec/docker/cli-plugins/docker-compose
 
 RUN useradd -m actions && \
   echo "actions ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/actions
