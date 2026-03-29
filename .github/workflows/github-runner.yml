@@ -6,7 +6,8 @@ on:
   push:
     paths:
       - .github/workflows/github-runner.yml
-      - github-runner/Dockerfile
+      - github-runner/**
+      - '!github-runner/**/*.md'
   workflow_dispatch:
 
 jobs:
